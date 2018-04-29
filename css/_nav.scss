@@ -57,8 +57,7 @@
             color: #333;
         }
 
-        li.menu-item-has-children,
-        li.menu-item-object-custom {
+        li.menu-item-has-children {
             > a:after {
                 font-family: 'Dashicons';
                 content: "\f347";
@@ -75,8 +74,7 @@
             }
         }
 
-        li.menu-item-has-children.active,
-        li.menu-item-object-custom.active {
+        li.menu-item-has-children.active {
             background-color: rgba(black, 0.05);
         }
 
