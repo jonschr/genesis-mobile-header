@@ -1,0 +1,24 @@
+$mobile-width-section: 1023px;
+
+@mixin rbmh-mobile {
+	 @media (max-width: #{$mobile-width-section - 1}){
+		@content;
+	}
+}
+
+@mixin rbmh-notmobile {
+	 @media (min-width: #{$mobile-width-section}){
+		@content;
+	}
+}
+
+@import '_mobile_hide.scss';
+@import '_header.scss';
+@import '_nav.scss';
+@import '_slide_section_layout.scss';
+
+div.clear {
+    clear: both;
+    width: 100%;
+    float: none;
+}
