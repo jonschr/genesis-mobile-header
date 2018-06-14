@@ -116,3 +116,14 @@ body.menu-is-active {
         opacity: 1;
     }
 }
+
+//* Reduce bugs on mobile logged-in view (though it doesn't matter at all to the functionality of this)
+.admin-bar {
+    .slide-menu.show {
+        @include rbmh-mobile {
+            position: absolute;
+            top: 46px;
+            min-height: calc( 100% + 46px );
+        }
+    }
+}
