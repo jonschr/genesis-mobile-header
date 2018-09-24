@@ -23,6 +23,9 @@ if ( !defined( 'ABSPATH' ) ) {
     die( "Sorry, you are not allowed to access this page directly." );
 }
 
+// Define the version number
+define( 'REDBLUE_MOBILE_NAV_VERSION', 0.1 );
+
 // Plugin directory
 define( 'REDBLUE_MOBILE_NAV', dirname( __FILE__ ) );
 
@@ -47,11 +50,11 @@ function rbmn_scripts_styles() {
     wp_enqueue_style( 'dashicons' );
 
     //* Enqueue main style
-    wp_enqueue_style( 'rbmn-style', plugin_dir_url( __FILE__ ) . '/css/rbmn-style.css' );
+    wp_enqueue_style( 'rbmn-style', plugin_dir_url( __FILE__ ) . 'css/rbmn-style.css', array(), REDBLUE_MOBILE_NAV_VERSION, 'screen' );
 
     //* Enqueue scripts
     wp_enqueue_script( 'jquery' );
-    wp_enqueue_script( 'slideout', plugin_dir_url( __FILE__ ) . '/js/slide-menus.js', 'jquery' );
+    wp_enqueue_script( 'slideout', plugin_dir_url( __FILE__ ) . 'js/slide-menus.js', array( 'jquery' ), REDBLUE_MOBILE_NAV_VERSION, true );
 
 }
 
@@ -65,7 +68,7 @@ function rbmn_add_widget_areas() {
     genesis_register_sidebar( array(
         'id'			=> 'mobile-header',
         'name'		  => __( 'Mobile header', 'rbmn' ),
-        'description'   => __( 'This area displays next to the hamburger. Keep this extremely short. If a logo is used, its height will be constrained. Recommended usage: <div style="background-image:url(http://yoursite.com/yourlogo.svg);" class="logo"></div>', 'rbmn' ),
+        'description'   => __( 'This area displays next to the hamburger. Keep this extremely short. If a logo is used, its height will be constrained. Recommended usage: a link with a class of "logo."', 'rbmn' ),
     ) );
     genesis_register_sidebar( array(
         'id'			=> 'mobile-after-header',
@@ -123,15 +126,12 @@ function rbmn_add_mobile_nav_button() {
 
 }
 
-
 function rbmn_add_after_header() {
     genesis_widget_area( 'mobile-after-header', array(
         'before' => '<div class="clear"></div><div class="mobile-after-header-widget-area">',
         'after' => '</div>',
     ) );
 }
-
-
 
 function rbmn_close_body_container_markup() {
 
